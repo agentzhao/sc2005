@@ -153,7 +153,7 @@ Somewhere along the line, other that the 6 global vairables from exp1-3, a few m
 - `virtual page size` - 128 bytes or 0x80. e.g 0x4cc is in vpn 9
 
 ```
-// memoryTable[i]
+// memoryTable[i], number of entries (4) equals to number of frames in main memory
   bool valid;        // if frame is valid (being used)
   SpaceId pid;       // pid of frame owner
   int vPage;         // corresponding virtual page
@@ -232,3 +232,8 @@ For every TLB miss, we want to know what the IPT and TLB entry is being updated.
 If we want to get the data from only Page faults, we can do so in PageOutPageIn().
 
 To get the entries where pages are paged out, we can print `phyPage` in `DoPageOut(phyPage)` under the condition that `memoryTable[phyPage].dirty` is `TRUE`
+
+## Additional Notes
+
+- if context switch, valid bits of TLB all set to 0
+- if thread deleted, valid bits of TLB and IPT are set to 0

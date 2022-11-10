@@ -1,17 +1,15 @@
 
-#include "syscall.h"
 #include "strings.h"
+#include "syscall.h"
 
-int
-main()
-{
-    int s;
-    int rc;
+int main() {
+  int s;
+  int rc;
 
-    s = Exec("../test/vm.noff");
-    rc = Join(s);
-    
-    Halt();
+  s = Exec("../test/vm.noff");
+  rc = Join(s);
 
-    /* not reached */
+  Halt();
+
+  /* not reached */
 }
